@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from .models import Product
 
 # Create your views here.
 
@@ -7,5 +9,8 @@ def home(request):
 
 def aboutcompany(request):
     return render(request, 'about.html')
-def productscompany(request):
-    return render(request, 'products.html')
+
+
+class Product_view(ListView):
+    model = Product
+    template_name = 'products.html'

@@ -6,6 +6,18 @@ Products
 {% endblock %}
 
 {% block content %}
-product desc
-
+<ul class="list-group">
+    {% for item in object_list %}
+    <li class="list-group-item">
+        <div class="card mb-3">
+            <img src="{% static 'core/image/image_cap.jpg' %}" class="card-img-top" alt="..." style="height: 300px;">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title">{{item.product_name}}</h5>
+              <p class="card-text">{{item.product_subname}}</p>
+              <a href="#" class="btn btn-primary">Rs.{{item.product_price}}price <s>{{item.product_mrp}}mrp</s>(__% off)</a>
+            </div>
+          </div>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}
