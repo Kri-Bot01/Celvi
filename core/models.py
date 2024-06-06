@@ -10,7 +10,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
     product_description = models.TextField(blank = True)
-    product_image = models.CharField(max_length=255)
+    product_image = models.ImageField(upload_to="uploads/product_image/")
     product_size = models.ForeignKey("Product_size", on_delete=models.CASCADE)
     product_color = models.CharField(max_length=25)
     product_gender = models.ForeignKey("Product_gender", on_delete=models.CASCADE)
