@@ -14,3 +14,6 @@ def aboutcompany(request):
 class Product_view(ListView):
     model = Product
     template_name = 'products.html'
+
+def privacycompany(request):
+    return render(request, 'privacypolicy.html')
