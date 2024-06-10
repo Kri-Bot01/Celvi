@@ -18,3 +18,6 @@ class Product_view(ListView):
 
 def privacycompany(request):
     return render(request, 'privacypolicy.html')
+
+def contactcompany(request):
+    return render(request, 'contact.html')
