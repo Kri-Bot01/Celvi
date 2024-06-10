@@ -263,11 +263,11 @@
       </button>
       <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="#"></a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#"><img src="{% static 'core/image/orders.svg' %}" height="25px" style="padding-right: 4px;">My orders</a></li>
         <li><a class="dropdown-item" href="{% url 'logout' %}">
           <form id="logout-form" method="post" action="{% url 'logout' %}">
             {% csrf_token %}
-            <button type="submit" class="btn"><img src="{% static 'core/image/logout.svg' %}" height="15px" style="padding-right: 4px;">Logout</button>
+            <button type="submit" class="btn"><img src="{% static 'core/image/logout.svg' %}" height="15px" style="padding-right: 9px;">Logout</button>
           </form>
         </a>
         </li>
