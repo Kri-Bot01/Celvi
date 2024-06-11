@@ -21,3 +21,9 @@ def privacycompany(request):
 
 def contactcompany(request):
     return render(request, 'contact.html')
+
+def product_quality(request):
+    return render(request, 'product_quality.html')
+
+def reviews_company(request):
+    return render(request, 'reviews .html')
