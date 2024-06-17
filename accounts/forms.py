@@ -12,6 +12,7 @@ from .tokens import account_activation_token
 from django.core.mail import send_mail
 from django.conf import settings
 
+
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(label = "Email")
     def __init__(self, *args, **kwargs): 
@@ -35,7 +36,9 @@ class CustomUserCreationForm(UserCreationForm):
             'placeholder':'JohnDoe@mail.com', 
             }) 
         self.fields['password1'].widget.attrs.update({ 
-            'class': 'form-input', 
+            'class': 'form-input',
+            'pattern': '(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]+',
+            'title': 'Password must contain at least one capital letter, one small letter, one number, and one special character', 
             'required':'', 
             'name':'password1', 
             'id':'password1', 
@@ -45,12 +48,14 @@ class CustomUserCreationForm(UserCreationForm):
             'minlength':'8' 
             }) 
         self.fields['password2'].widget.attrs.update({ 
-            'class': 'form-input', 
-            'required':'', 
+            'class': 'form-input',
+            
+            "title": "Password should be the same as entered above!", 
+            'required':'required' if self.data.get('password1') else 'Wrong pass', 
             'name':'password2', 
             'id':'password2', 
             'type':'password', 
-            'placeholder':'password', 
+            'placeholder':'re-enter-password', 
             'maxlength':'22',  
             'minlength':'8' 
             }) 

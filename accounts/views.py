@@ -36,7 +36,7 @@ def signup(request):
         username = form.cleaned_data.get('username') 
         password = form.cleaned_data.get('password') 
         email = form.cleaned_data.get('email')
-        user = user.authenticate(username=username, password=password, email=email) 
+        user = User.authenticate(username=username, password=password, email=email) 
         login(request, user) 
         return redirect('home') 
     context = { 
