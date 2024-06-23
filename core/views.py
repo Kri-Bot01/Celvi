@@ -26,4 +26,7 @@ def product_quality(request):
     return render(request, 'product_quality.html')
 
 def reviews_company(request):
-    return render(request, 'reviews .html')
+    return render(request, 'reviews.html')
+
+def product_description(request):
+    return render(request, 'product_desc.html')
