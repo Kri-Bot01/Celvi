@@ -74,8 +74,7 @@ class CustomUserCreationForm(UserCreationForm):
         user.email = self.cleaned_data["email"]
         if commit:
             user.save()
-            
-            mail_subject = 'Activation link has been sent to your email id'  
+            mail_subject = 'Activation link for your celvi accout'  
             message = render_to_string('acc_active_email.html', {  
                 'user': user,  
                 'domain': "http://127.0.0.1:8000",  
@@ -89,4 +88,7 @@ class CustomUserCreationForm(UserCreationForm):
                 [user.email],
                 fail_silently=False,
             )
+        return render(request, 'registration/email_sent_success.html', context) 
         return user
+        
+   
