@@ -30,3 +30,6 @@ def reviews_company(request):
 
 def product_description(request):
     return render(request, 'product_desc.html')
+
+def cart_shopping(request):
+    return render(request, 'cart.html')

@@ -276,10 +276,8 @@
     </div>
     {% if user.is_authenticated %}
     <div class="dropdown">
-      <button class="btn dropdown-hover ani" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
-         
+      <button class="btn dropdown-hover ani" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">         
         {{ user.get_username }}
-
       </button>
       <ul class="dropdown-menu" style="background-color: #ffffff;">
         <li><a class="dropdown-item" href="#"></a></li>
@@ -292,10 +290,14 @@
         </a>
         </li>
       </ul>
+      <a href="{% url 'cart' %}"><img src="{% static 'core/image/shopping-cart.jpg' %}" height="50px" width="50px" style="margin-left: 5px;">
+      </a>
     </div>
+    
     {% else %}
     <button class="btn ani" type="button" ><a href="{% url 'login' %}" style="text-decoration:none; color: rgb(253, 253, 253)">Sign in</a></button>
-    {% endif %}    
+    {% endif %}
+    
     <div id="hamburger-menu">&#9776;abcd</div>
   </div>
 
