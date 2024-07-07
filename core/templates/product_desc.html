@@ -6,305 +6,36 @@
 {% endblock %}
 
 {% block content %}
-<head>
-    <Style>
-        html{
-            background-color: white;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            max-width: 100vw;
-            width: 100vw;
-            overflow-x: hidden;
-          }
-          *{
-            box-sizing: border-box;
-            margin: 0;
-            border:0;
-            } 
-          img{
-            width: 100%;
-          }
-          body {
-            font-family: 'Poppins', sans-serif;
-            font-size: 2rem; /* 18px */
-            font-weight: 400;
-            line-height: 1.4;
-            color: #202020;
-            background-color: #ffffff;
-          }
-          .container-fluid{
-            padding: 0 0 0 0px;
-          }
-          
-          h1,
-          h2,
-          h3{
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            text-align: center;
-            padding: 10px;
-          }
-          
-          h1 {
-            font-size: 3.5rem;
-          }
-          
-          h2 {
-            font-size: 3rem;
-          }
-          h3{
-            font-size: 2rem;
-          }
-          p{
-          font-size: 18px;
-          padding: 10px;
-          }
-          
-          
-          .row{
-            padding: 30px;
-          }
-          .logo{
-            width: 200px;
-            padding: 20px;
-            float: left;
-            background-color: transparent;
-          } 
-          .slider-container {
-            width: 100%;
-            height: auto;
-            padding-top: 20px;
-          }
-          .slider-container img{
-          width: 100%;
-          }
-          .fade-in {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out ;
-            }
-            .fade-in.appear {
-            opacity: 1;
-            transform: translateY(0);
-            }
-          
-          
-          
-          .features{
-              color: #111111;
-              font-size: 18px;
-              padding: 10px;
-          }          
-          /* Product Description */
-          .product-description {
-          border-bottom: 1px solid #E1E8EE;
-          margin-bottom: 20px;
-          display: block;
-          }
-          .product-description span {
-          font-size: 12px;
-          color: firebrick;
-          letter-spacing: 1px;
-          text-transform: uppercase;
-          text-decoration: none;
-          }
-          .product-description h1 {
-          font-weight: 300;
-          font-size: 50px;
-          color: rgb(51, 51, 51);
-          letter-spacing: 1px;
-          }
-          .product-description li {
-          font-size: 16px;
-          font-weight: 300;
-          color: #86939E;
-          line-height: 24px;
-          }
-          .product-description h3{
-          color: #a7a7a7;
-          }
-          
-          /* Product Price */
-          .product-price {
-          display: flex;
-          align-items: center;
-          }
-          
-          .product-price span {
-          font-size: 26px;
-          font-weight: 300;
-          color: #43474D;
-          margin-right: 20px;
-          }
-          
-          .cart-btn {
-          display: inline-block;
-          background-color: #575757;
-          border-radius: 6px;
-          font-size: 16px;
-          color: #FFFFFF;
-          text-decoration: none;
-          padding: 12px 30px;
-          transition: all .5s;
-          }
-          .cart-btn:hover {
-          background-color: #27db3f;
-          }
-            .photo-container img:hover{
-              transform: scale(1.1);
-            }
-          
-            .iframe{
-              background-color: #0f0f0f;
-              padding: 40px 0 40px 0;
-            }
-              iframe{
-               height: 350px;
-              }
-            .button{
-              text-align: center;
-              background-color: firebrick;
-              color: #ffffff;
-              font-size: 1rem;
-              padding: 10px;
-              position: center;
-              animation-fill-mode: all;
-              align-self: center;
-              }
-              
-              .button:hover{
-                background-color:floralwhite;
-                color: firebrick;
-              }
-              .fa {
-                padding: 7px;
-                font-size: 15px;
-                background: #717171;
-                color: firebrick;
-                width: 35px;
-                height: 35px;
-                text-decoration: none;
-                text-align: center;
-                border-radius: 10px;
-                cursor: pointer;
-              }
-              
-              .fa:hover {
-                transform: scale(1.3);
-              }
-    </Style>
-</head>
-
-<body id="home" class="container-fluid">
-   <div class="row">
-       
-     <div class="col-lg-6">
-      <img src="{{item.product_image.url}}">
-     </div>
-    
-   <div class="col-lg-6">
-       <div class="product-description">
-        <h1 class="fade-in">{{item.product_name}}<br>Product<br> description</h1>
-        <span>Id</span>
-        <ul class="fade-in">
-            <li>.</li>
-            <li>.</li>
-            <li>.</li>
-            <li>.</li>
-            <li>.</li>
-            <li>.</li>
-            <li>.</li>
-            <br>
-        </ul>
-       </div>
-       <div class="product-price">
-        <span>{{item.product_price}}</span>
-        <a href="#" class="cart-btn">Add to cart</a>
-      </div>
-   </div>
+<div class="card" style="width: 18rem;">
+  <img src="#" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ Product.product_name }}</h5>
+    <p class="card-text">{{ Product.product_subname }}</p>
+    <button type="button" value="{{ product.id }}" class="btn btn-warning" id="add-cart">Add to cart </button>
+  </div>
 </div>
-<!--*****************videos**********************-->
+<script>
+  $(document).on('click', '#add-cart', function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '{% url "cart_add" %}',
+      data: {
+        product_id: $('#add-cart').val(),
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        action: 'post'
+      },
 
-    <div id="features"  class="container-fluid">
-   <div style="padding: 0 20px 0 20px;" class="row">
-    <div class=" col-lg-8 features">
-        <h3 style="color: firebrick;">Product Details</h3>
-        <p class="fade-in">
-            <b>Poit 1</b> - explain 1
-        </p><br>
-        <p class="fade-in">
-             <b>Point 2</b> - explain 2            </p><br>
-        <p class="fade-in">
-            <b>point 3</b> - explai 3
-        </p><br>
-    </div>
-    <section class="photo-container col-lg-4">
-        <img  src="{{item.product_image.url}}">
-    </section>  
-    </div>
-</div>
-    <script>
-        function show(){
-            alert ("Thank you for submitting. Your message has been recieved and a reply would be sent shortly.");
-            }
-        
-        const faders = document.querySelectorAll(".fade-in");
-        const sliders = document.querySelectorAll(".slide-in");
-        
-        const appearOptions = {
-          threshold: 0,
-          rootMargin: "0px 0px -100px 0px"
-        };
-        
-        const appearOnScroll = new IntersectionObserver(function(entries,appearOnScroll){
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) {
-              return
-            } else {
-              entry.target.classList.add("appear");
-              appearOnScroll.unobserve(entry.target);
-            }
-          })
-          
-        },appearOptions);
-        
-        faders.forEach(fader => {
-          appearOnScroll.observe(fader);
-        })
-        
-        sliders.forEach(slider => {
-          appearOnScroll.observe(slider);
-          // console.log(slider)
-        })
-        
-        
-        
-        
-        const slides = document.querySelectorAll(".slides");
-        const dots = document.querySelectorAll(".dot");
-        // setting the index for the slides
-        let slideIndex = 0;
-        
-        const showSlides = () => {
-            slides.forEach(slide => {
-                slide.style.display = "none";
-            })
-            slideIndex++;
-            if (slideIndex > slides.length) {
-                slideIndex = 1
-            } 
-            dots.forEach(dot => {
-                dot.className = dot.className.replace("active", "");
-            })
-        
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active"; 
-            setTimeout(showSlides, 3000);
-        }
-        showSlides()
-    </script>    
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </body>
+      success: function(json){
+        //console.log(json)
+        document.getElementById('cart_quantity').textContent = json.qty
+      },
+
+      error: function(xhr, errmsg, err){
+
+      }
+
+    });
+  })
+</script>
 {% endblock %}

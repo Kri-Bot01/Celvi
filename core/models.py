@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Product(models.Model):
+    product_id = models.DecimalField(max_digits=2,decimal_places=0)
     product_name = models.CharField(max_length=200)
     product_subname = models.CharField(max_length=200,null=True)
     product_type = models.ForeignKey("Product_type", on_delete=models.CASCADE)

@@ -21,13 +21,12 @@ Products
         {% for item in object_list %}
             <div class="col">
               <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-                <a href="{% url 'productdescr' %}"><img src="{{item.product_image.url}}" class="card-img-top" alt="..." style="border: 5px solid rgb(170, 170, 170);"></a>
+                <a href="{% url 'productdescr' item.id %}"><img src="{{item.product_image.url}}" class="card-img-top" alt="..." style="border: 5px solid rgb(170, 170, 170);"></a>
                 <div class="card-body">
-                  <h5><a href="{% url 'productdescr' %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_name}}</a></h5>
-                  <p><a href="{% url 'productdescr' %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_subname}}</a></p>
-                  
+                  <h5><a href="{% url 'productdescr' item.id %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_name}}</a></h5>
+                  <p><a href="{% url 'productdescr' item.id %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_subname}}</a></p>
                   <a href="#" class="btn btn-success">Buy now</a>
-                  <a href="#" class="btn btn-warning">Add to cart</a>
+                  
                 </div>
               </div>
             </div>
@@ -40,6 +39,8 @@ Products
         {% endfor %}
       </div>
     </div>
+
+    
 </body>
 
 {% endblock %}

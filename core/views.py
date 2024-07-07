@@ -28,8 +28,8 @@ def product_quality(request):
 def reviews_company(request):
     return render(request, 'reviews.html')
 
-def product_description(request):
-    return render(request, 'product_desc.html')
+def product_description(request,pk):
+    product = Product.objects.get(id=pk)
+    return render(request, 'product_desc.html',{'Product': Product})
 
-def cart_shopping(request):
-    return render(request, 'cart.html')
+
