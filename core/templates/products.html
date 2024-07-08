@@ -18,13 +18,13 @@ Products
 <body background="{% static 'core/image/bg.jpg' %}" style="background-attachment: fixed;">
     <div class="container text-center">
       <div class="row align-items-start ">
-        {% for item in object_list %}
+        {% for product in products %}
             <div class="col">
               <div class="card shadow p-3 mb-5 bg-body-tertiary rounded" style="width: 18rem;">
-                <a href="{% url 'productdescr' item.id %}"><img src="{{item.product_image.url}}" class="card-img-top" alt="..." style="border: 5px solid rgb(170, 170, 170);"></a>
+                <a href="{% url 'productdescr' product.id %}"><img src="{{product.image.url}}" class="card-img-top" alt="..." style="border: 5px solid rgb(170, 170, 170);"></a>
                 <div class="card-body">
-                  <h5><a href="{% url 'productdescr' item.id %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_name}}</a></h5>
-                  <p><a href="{% url 'productdescr' item.id %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{item.product_subname}}</a></p>
+                  <h5><a href="{% url 'productdescr' product.id %}" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{product.name}}</a></h5>
+                  <p><a href="{% url 'productdescr' product.id %}" class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{product.subname}}</a></p>
                   <a href="#" class="btn btn-success">Buy now</a>
                   
                 </div>

@@ -11,10 +11,18 @@ def home(request):
 def aboutcompany(request):
     return render(request, 'about.html')
 
+def product_description(request,pk):
+	product = Product.objects.get(id=pk)
+	return render(request, 'product_desc.html', {'product':product})
 
-class Product_view(ListView):
-    model = Product
-    template_name = 'products.html'
+def Product_view(request):
+	products = Product.objects.all()
+	return render(request, 'products.html', {'products':products})
+
+
+#class Product_view(ListView):
+#   model = Product
+#   template_name = 'products.html'
 
 def privacycompany(request):
     return render(request, 'privacypolicy.html')
@@ -28,8 +36,6 @@ def product_quality(request):
 def reviews_company(request):
     return render(request, 'reviews.html')
 
-def product_description(request,pk):
-    product = Product.objects.get(id=pk)
-    return render(request, 'product_desc.html',{'Product': Product})
+
 
 
