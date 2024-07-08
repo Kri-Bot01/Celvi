@@ -88,7 +88,6 @@ class CustomUserCreationForm(UserCreationForm):
                 [user.email],
                 fail_silently=False,
             )
-        return render(request, 'registration/email_sent_success.html', context) 
         return user
         
    

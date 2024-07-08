@@ -4,17 +4,17 @@ from django.db import models
 
 class Product(models.Model):
     product_id = models.DecimalField(max_digits=2,decimal_places=0)
-    name = models.CharField(max_length=200)
-    subname = models.CharField(max_length=200,null=True)
-    type = models.ForeignKey("Product_type", on_delete=models.CASCADE)
+    product_name = models.CharField(max_length=200)
+    product_subname = models.CharField(max_length=200,null=True)
+    product_type = models.ForeignKey("Product_type", on_delete=models.CASCADE)
     mrp = models.DecimalField(max_digits=8, decimal_places=2)
     price = models.DecimalField(max_digits=8, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
-    description = models.TextField(blank = True)
-    image = models.ImageField(upload_to="uploads/product_image/")
-    size = models.ForeignKey("Product_size", on_delete=models.CASCADE)
-    color = models.CharField(max_length=25)
-    gender = models.ForeignKey("Product_gender", on_delete=models.CASCADE)
+    product_description = models.TextField(blank = True)
+    product_image = models.ImageField(upload_to="uploads/product_image/")
+    product_size = models.ForeignKey("Product_size", on_delete=models.CASCADE)
+    product_color = models.CharField(max_length=25)
+    product_gender = models.ForeignKey("Product_gender", on_delete=models.CASCADE)
     
     def __str__(self):
         return f"{self.product_name}_{self.product_color}_{self.id}"

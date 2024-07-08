@@ -24,13 +24,13 @@ Shopping Cart
 <div class="card mb-3">
   <div class="row g-0">
     <div class="col-md-4">
-      <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+      <img src="{{ product.product_image.url }}" class="img-fluid rounded-start" alt="..." height="200px" width="200px" style="margin-left: 100px;">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
+        <h5 class="card-title">{{ product.product_name }}</h5>
         <br/>
-        <p class="card-text justified">{{ product.description }}</p>
+        <p class="card-text justified">{{ product.product_description }}</p>
         {{ product.price }}
             <br/><br/>
         <div class="row justify-content-center">
@@ -38,11 +38,7 @@ Shopping Cart
                 <div class="col-md-2">
                 <select class="form-select form-select-sm" id="select{{product.id}}">
                   
-            {% for key, value in quantities.items %}
-                {% if key == product.id|slugify %}
-            <option selected>{{ value }}</option>
-                {% endif %}
-            {% endfor %}
+                
                            
 
                   <option value="1">1</option>
@@ -67,7 +63,7 @@ Shopping Cart
         	{% endfor %}
             <div align="right">
             <h3>Total: ${{ totals }}</h3>
-            <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
+            <a href="#" class="btn btn-success">Checkout</a>
 
             </div>
             <br/><br/><br/>
