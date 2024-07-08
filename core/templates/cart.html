@@ -38,7 +38,11 @@ Shopping Cart
                 <div class="col-md-2">
                 <select class="form-select form-select-sm" id="select{{product.id}}">
                   
-                
+                  {% for key, value in quantities.items %}
+                {% if key == product.id|slugify %}
+            <option selected>{{ value }}</option>
+                {% endif %}
+            {% endfor %}              
                            
 
                   <option value="1">1</option>
@@ -63,6 +67,7 @@ Shopping Cart
         	{% endfor %}
             <div align="right">
             <h3>Total: ${{ totals }}</h3>
+            <a href="{% url 'product' %}" class="btn btn-primary">Continue Shopping...</a>
             <a href="#" class="btn btn-success">Checkout</a>
 
             </div>

@@ -10,6 +10,8 @@ from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode 
 from .tokens import account_activation_token 
 from django.http import HttpResponse
+from django.contrib import messages
+from django.shortcuts import redirect
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
@@ -30,15 +32,18 @@ def activate(request, uidb64, token):
         return HttpResponse('Activation link is invalid!')  
 
 def signup(request): 
-    form = CustomUserCreationForm(request.POST) 
-    if form.is_valid(): 
-        form.save() 
-        username = form.cleaned_data.get('username') 
-        password = form.cleaned_data.get('password') 
-        email = form.cleaned_data.get('email')
-        user = user.authenticate(username=username, password=password, email=email) 
-        login(request, user) 
-        return redirect('home') 
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST) 
+        if form.is_valid(): 
+            messages.success(request, 'Activation Link sent to Email')
+            form.save()             
+            return redirect('login')
+        else:
+            print(form.errors)
+            messages.error(request, form.errors)
+            return redirect('signup')
+    else:
+        form = CustomUserCreationForm()
     context = { 
         'form': form 
     } 

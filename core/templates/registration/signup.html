@@ -290,11 +290,16 @@
   
   <header class="showcase">
     <div class="showcase-content">
+      {% if messages %}
+      {% for message in messages %}
+          <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+      {% endfor %}
+  {% endif %}
       <div class="showcase-top">
         <h1>Sign Up</h1>
       </div>
       <div class="formm">
-        <form method="POST" actione="." class="info login-form spacer email" id="signup-form">
+        <form method="POST" actione="{% url 'signup' %}" class="info login-form spacer email" id="signup-form">
           {% csrf_token %}
           <h2>Welcome user!</h2>
           <div class="info">
@@ -307,7 +312,6 @@
           </div>
           <div class="btn">
             <input class = "btn-primary" type="submit" value="Signup">
-            <input type="hidden" name="next" value="{{ next }}">
             
           </div>
         </form>

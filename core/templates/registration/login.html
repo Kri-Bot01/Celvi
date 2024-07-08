@@ -202,7 +202,13 @@
 
 <body>
   <header class="showcase">
+   
     <div class="showcase-content">
+      {% if messages %}
+      {% for message in messages %}
+          <small {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</small>
+      {% endfor %}
+  {% endif %}
       <div class="showcase-top">
         <h1>LOGIN</h1>
       </div>

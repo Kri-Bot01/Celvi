@@ -33,7 +33,7 @@ class Cart():
         return products
 
     def get_quants(self):
-        quantities = self.cart()
+        quantities = self.cart
         return quantities
 
     def update(self, product, quantity):
