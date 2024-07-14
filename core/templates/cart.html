@@ -18,17 +18,16 @@ Shopping Cart
         </header>
         <br/>
         
-        {% if messages %}
-    <div id="message-container">
-    {% for message in messages %}
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      <strong>{{message}}</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    {% endfor %}
-    </div>
-{% endif %}
+ 
         <div class="container">
+          {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{message}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
+      {% endif %}
         {% if cart_products %}
         	{% for product in cart_products %}
         	
@@ -78,7 +77,7 @@ Shopping Cart
             <div align="right">
             <h3>Total: &#8377;{{ totals }}</h3>
             <a href="{% url 'product' %}" class="btn btn-primary">Continue Shopping...</a>
-            <a href="#" class="btn btn-success">Checkout</a>
+            <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
 
             </div>
             <br/><br/><br/>
