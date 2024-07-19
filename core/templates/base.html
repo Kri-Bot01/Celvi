@@ -62,9 +62,7 @@
       background-color: #000000;
       padding-left: 80px;
       padding-right: 80px;
-      box-shadow: 7px 5px 15px -4px rgba(0, 0, 0, 0.75);
-      -webkit-box-shadow: 7px 5px 15px -4px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 7px 5px 15px -4px rgba(0, 0, 0, 0.75);
+
   }
   
   .nav-items > ul > li {
@@ -310,7 +308,8 @@
       <div class="dropdown">
          
         <ul class="dropdown-menu" style="background-color: #ffffff;">
-          <li><a class="dropdown-item" href="#"></a></li>
+          <li><a class="dropdown-item" href="{% url 'update_user' %}">Profile Settings</a></li>
+          <li><a class="dropdown-item" href="{% url 'update_info' %}">Shipping Adress</a></li>
           <li><a class="dropdown-item" href="#"><img src="{% static 'core/image/orders.svg' %}" height="25px" style="padding-right: 4px;">My orders</a></li>
           <li><a class="dropdown-item" href="{% url 'logout' %}">
             <form id="logout-form" method="post" action="{% url 'logout' %}">

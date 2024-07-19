@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CustomUserCreationForm,UserCreationForm
+from .forms import CustomUserCreationForm,UserCreationForm,UpdateUserForm
 from django.contrib.auth.models import User
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode 
@@ -12,6 +12,8 @@ from .tokens import account_activation_token
 from django.http import HttpResponse
 from django.contrib import messages
 from django.shortcuts import redirect
+
+
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
