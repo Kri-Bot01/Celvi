@@ -3,7 +3,7 @@ from core.models import Product
 class Cart():
     def __init__(self, request):
         self.session = request.session
-
+        self.request = request
         cart = self.session.get('session_key')
 
         if "session_key" not in request.session:
@@ -22,6 +22,8 @@ class Cart():
             self.cart[product_id] = int(product_qty)
         
         self.session.modified = True
+
+
 
     def cart_total(self):
         product_ids = self.cart.keys()
